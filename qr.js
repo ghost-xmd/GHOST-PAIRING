@@ -157,11 +157,17 @@ router.get('/', async (req, res) => {
                             console.log("🎬 Video guide sent successfully");
                             
                             // Send warning message
-                            await sock.sendMessage(userJid, {
-                                text: `⚠️Do not share this file with anybody⚠️\n 
-┌┤✑  Thanks for using Knight Bot
+                            image: { url: 'https://files.catbox.moe/cv6t5y.jpeg' },
+                            caption: `🎬 *GHOST-XMD Full Setup Guide!*\n\n🚀 Bug Fixes + New Commands + Fast AI Chat\n📺 Watch Now: http://www.youtube.com/@HACKLINKTECH-h4h`
+                        });
+                        console.log("🎬 Video guide sent successfully");
+
+                        // Send warning message
+                        await KnightBot.sendMessage(userJid, {
+                            text: `⚠️Do not share this file with anybody⚠️\n 
+┌┤✑  Thanks for using GHOST-XMD
 │└────────────┈ ⳹        
-│©2024 Mr Unique Hacker 
+│©2025 GHOST-VIEWER
 └─────────────────┈ ⳹\n\n`
                             });
                         } else {
