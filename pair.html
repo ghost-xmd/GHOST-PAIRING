@@ -6,18 +6,14 @@
   <title>Knight Bot - WhatsApp Linker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
   <style>
-    /* === HACKLINK Neon Theme === */
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
     :root {
-      --primary-color: #0ff;
-      --secondary-color: #fff;
-      --accent-color: #00f0ff33;
-      --text-color: #0ff;
-      --background-color: #000;
-      --hover-color: #111;
-      --border-color: #0ff;
-      --glow-color: #0ff;
+      --primary-color: #000000;
+      --secondary-color: #ffffff;
+      --accent-color: #f0f0f0;
+      --text-color: #000000;
+      --background-color: #ffffff;
+      --hover-color: #f5f5f5;
+      --border-color: rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -27,45 +23,24 @@
     }
 
     body {
-      font-family: 'Share Tech Mono', monospace;
-      background: linear-gradient(120deg, #000 0%, #050505 100%);
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
       color: var(--text-color);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Animated Background */
-    body::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,255,255,0.15) 1%, transparent 1%) repeat;
-      background-size: 50px 50px;
-      animation: moveBg 20s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes moveBg {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-50%, -50%); }
+      padding: 15px;
     }
 
     .container {
-      position: relative;
       width: 100%;
-      max-width: 480px;
-      background: rgba(0,0,0,0.85);
-      border: 2px solid var(--glow-color);
+      max-width: 450px;
+      background: var(--background-color);
       border-radius: 16px;
       padding: 25px;
-      box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color) inset;
-      z-index: 1;
-      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--border-color);
     }
 
     .header {
@@ -77,40 +52,26 @@
       width: 70px;
       height: 70px;
       margin: 0 auto 16px;
+      background: var(--primary-color);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      color: var(--primary-color);
-      text-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color);
+      color: white;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     }
 
-    /* Typewriter title */
     .title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
-      color: var(--primary-color);
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 0.15em solid var(--primary-color);
-      width: 0;
-      animation: typing 2.5s steps(20, end) forwards, blink 0.75s step-end infinite;
       margin-bottom: 8px;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: var(--primary-color); }
+      color: var(--primary-color);
     }
 
     .subtitle {
       font-size: 14px;
-      color: #0ff99;
+      color: rgba(0, 0, 0, 0.7);
       margin-bottom: 20px;
     }
 
@@ -128,11 +89,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #000;
+      color: #fff;
       font-size: 18px;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 8px var(--primary-color);
     }
 
     .social-icons a.youtube { background: #FF0000; }
@@ -142,18 +102,19 @@
 
     .social-icons a:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 12px var(--primary-color), 0 0 24px var(--primary-color) inset;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
+    /* Toggle Switch Styles */
     .toggle-container {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-      background: rgba(0,255,255,0.05);
+      background: var(--hover-color);
       border-radius: 12px;
       padding: 4px;
-      border: 1px solid var(--glow-color);
+      border: 1px solid var(--border-color);
     }
 
     .toggle-option {
@@ -166,21 +127,25 @@
       font-weight: 500;
       transition: all 0.3s ease;
       position: relative;
-      color: var(--text-color);
-      text-shadow: 0 0 4px var(--primary-color);
     }
 
     .toggle-option.active {
-      background: var(--glow-color);
-      color: #000;
-      text-shadow: 0 0 12px var(--glow-color);
+      background: var(--primary-color);
+      color: var(--secondary-color);
     }
 
-    .copy-btn, .generate-btn {
+    .toggle-option:not(.active) {
+      color: var(--text-color);
+    }
+
+    .toggle-option:hover:not(.active) {
+      background: var(--background-color);
+    }
+    .copy-btn {
       width: 100%;
       padding: 12px;
-      background: rgba(0,255,255,0.1);
-      border: 1.5px solid var(--glow-color);
+      background: var(--hover-color);
+      border: 1.5px solid var(--border-color);
       border-radius: 12px;
       font-size: 15px;
       font-weight: 600;
@@ -189,19 +154,20 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: var(--primary-color);
-      text-shadow: 0 0 4px var(--glow-color);
-      transition: all 0.3s ease;
-      margin-bottom: 16px;
     }
 
-    .copy-btn:hover, .generate-btn:hover {
-      background: rgba(0,255,255,0.2);
-      box-shadow: 0 0 12px var(--glow-color), 0 0 24px var(--glow-color) inset;
+    .copy-btn:hover {
+      background: var(--background-color);
+      border-color: var(--primary-color);
     }
 
     .input-group {
       margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .input-group.hidden {
+      display: none;
     }
 
     .input-label {
@@ -209,28 +175,49 @@
       margin-bottom: 8px;
       font-weight: 500;
       font-size: 13px;
-      color: #0ff;
     }
 
     .input-field {
       width: 100%;
       padding: 12px;
-      border: 1.5px solid var(--glow-color);
+      border: 1.5px solid var(--border-color);
       border-radius: 12px;
-      background: rgba(0,0,0,0.8);
-      color: #0ff;
+      background: var(--background-color);
+      color: var(--text-color);
       font-size: 15px;
-      text-shadow: 0 0 4px var(--primary-color);
     }
 
     .input-field:focus {
       outline: none;
-      border-color: #0ff;
-      box-shadow: 0 0 12px var(--glow-color);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-color);
+      border: none;
+      border-radius: 12px;
+      color: var(--secondary-color);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+    }
+
+    .generate-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .generate-btn.hidden {
+      display: none;
     }
 
     .code-display {
-      background: rgba(0,255,255,0.05);
+      background: var(--hover-color);
       padding: 12px;
       border-radius: 12px;
       text-align: center;
@@ -241,17 +228,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--glow-color);
-      text-shadow: 0 0 8px var(--glow-color);
+      border: 1.5px solid var(--border-color);
     }
 
     .qr-display {
-      background: rgba(0,255,255,0.05);
+      background: var(--hover-color);
       padding: 30px;
       border-radius: 12px;
       text-align: center;
       margin-bottom: 16px;
-      border: 1.5px solid var(--glow-color);
+      border: 1.5px solid var(--border-color);
       display: none;
     }
 
@@ -260,34 +246,31 @@
       max-height: 280px;
       margin: 0 auto 20px;
       border-radius: 12px;
-      box-shadow: 0 0 12px var(--glow-color);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
     .qr-instructions {
       font-size: 13px;
-      color: #0ff;
+      color: rgba(0, 0, 0, 0.7);
       line-height: 1.5;
-      text-shadow: 0 0 4px var(--glow-color);
     }
 
     .success-message {
-      color: #0ff;
+      color: #000aff;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       font-size: 16px;
-      text-shadow: 0 0 8px var(--glow-color);
     }
 
     .error-message {
-      color: #f00;
+      color: #e74c3c;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       font-size: 14px;
-      text-shadow: 0 0 8px red;
     }
 
     .loading {
@@ -300,7 +283,6 @@
       font-size: 24px;
       color: var(--primary-color);
       animation: spin 1s linear infinite;
-      text-shadow: 0 0 12px var(--glow-color);
     }
 
     @keyframes spin {
@@ -312,34 +294,7 @@
       text-align: center;
       margin-top: 20px;
       font-size: 12px;
-      color: #0ff66;
-      text-shadow: 0 0 4px var(--glow-color);
-    }
-
-    /* Music Player Button */
-    .music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: rgba(0,255,255,0.1);
-      border: 2px solid var(--glow-color);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary-color);
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 99;
-      box-shadow: 0 0 12px var(--glow-color);
-      transition: all 0.3s ease;
-    }
-
-    .music-btn:hover {
-      background: rgba(0,255,255,0.2);
-      box-shadow: 0 0 24px var(--glow-color), 0 0 36px var(--glow-color) inset;
+      color: rgba(0, 0, 0, 0.5);
     }
 
     @media (max-width: 480px) {
@@ -349,9 +304,19 @@
         max-width: 400px;
       }
 
-      .code-display { font-size: 16px; min-height: 50px; }
-      .qr-image { max-width: 240px; max-height: 240px; }
-      .qr-display { padding: 20px; }
+      .code-display {
+        font-size: 16px;
+        min-height: 50px;
+      }
+
+      .qr-image {
+        max-width: 240px;
+        max-height: 240px;
+      }
+
+      .qr-display {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -359,16 +324,17 @@
   <div class="container">
     <div class="header">
       <div class="logo"><i class="fas fa-robot"></i></div>
-      <h1 class="title">Ghost pairing</h1>
+      <h1 class="title">GHOST XMD</h1>
       <p class="subtitle">Link your WhatsApp device</p>
       <div class="social-icons">
-        <a href="http://www.youtube.com/@HACKLINKTECH-h4h?sub_confirmation=1" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+       <a href="http://www.youtube.com/@HACKLINKTECH-h4h?sub_confirmation=1" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
         <a href="https://t.me/+hxojkc7kaVViYzd" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://whatsapp.com/channel/0029Vb6jxRD7IUYbQfokIu2s" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://github.com/ghost-xmd" target="_blank" class="github"><i class="fab fa-github"></i></a>
       </div>
     </div>
 
+    <!-- Toggle Switch -->
     <div class="toggle-container">
       <div class="toggle-option active" data-mode="pair">
         <i class="fas fa-key"></i> Pair Code
@@ -407,13 +373,9 @@
     </button>
 
     <div class="footer">
-      <p>© 2025 Ghost-viewer | GHOST-XMD</p>
+      <p>© 2025 ghost-viewer | GHOST-XMD</p>
     </div>
   </div>
-
-  <!-- Music Player Button -->
-  <div class="music-btn" id="musicBtn"><i class="fas fa-music"></i></div>
-  <audio id="bgMusic" loop></audio>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
@@ -425,10 +387,14 @@
         const mode = this.dataset.mode;
         if (mode === currentMode) return;
 
+        // Update active state
         document.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
         this.classList.add('active');
+
+        // Update mode
         currentMode = mode;
 
+        // Update button and input visibility
         const submitBtn = document.getElementById('submit');
         const inputGroup = document.getElementById('inputGroup');
         
@@ -439,9 +405,11 @@
         } else {
           submitBtn.classList.add('hidden');
           inputGroup.classList.add('hidden');
+          // Auto-generate QR code when QR mode is selected
           generateQRCode();
         }
 
+        // Clear displays
         document.getElementById('codeDisplay').innerHTML = 'Your pair code will appear here';
         document.getElementById('qrDisplay').style.display = 'none';
         document.getElementById('codeDisplay').style.display = 'flex';
@@ -470,6 +438,7 @@
           codeDisplay.style.display = 'flex';
         }
       } catch (error) {
+        console.error("Error generating QR code:", error);
         codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Error generating QR code. Please try again.</div>';
         codeDisplay.style.display = 'flex';
       } finally {
@@ -496,4 +465,37 @@
       qrDisplay.style.display = 'none';
 
       try {
-        const response = await axios(`/pair?number=${mobileNumber.replace(/[^
+        const response = await axios(`/pair?number=${mobileNumber.replace(/[^0-9]/g, "")}`);
+        
+        const code = response.data.code || "Service Unavailable";
+        if (code === "Service Unavailable") {
+          codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Service Unavailable</div>';
+        } else {
+          codeDisplay.innerHTML = `<div class="success-message"><i class="fas fa-check-circle"></i> CODE: ${code}</div>`;
+        }
+        codeDisplay.style.display = 'flex';
+      } catch (error) {
+        console.error("Error generating code:", error);
+        codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Error generating code. Please try again.</div>';
+        codeDisplay.style.display = 'flex';
+      } finally {
+        loadingSpinner.style.display = "none";
+      }
+    });
+    function copyCode() {
+      const codeDisplay = document.getElementById("codeDisplay").innerText;
+      const code = codeDisplay.replace('CODE: ', '');
+      navigator.clipboard.writeText(code).then(() => {
+        const copyBtn = document.getElementById("copy");
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          copyBtn.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error("Failed to copy text: ", err);
+      });
+    }
+  </script>
+</body>
+</html>
