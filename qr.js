@@ -152,19 +152,13 @@ router.get('/', async (req, res) => {
                             // Send video thumbnail with caption
                             await sock.sendMessage(userJid, {
                                 image: { url: 'https://img.youtube.com/vi/-oz_u1iMgf8/maxresdefault.jpg' },
-                                caption: `🎬 *KnightBot MD V2.0 Full Setup Guide!*\n\n🚀 Bug Fixes + New Commands + Fast AI Chat\n📺 Watch Now: https://youtu.be/-oz_u1iMgf8`
+                                caption: `🎬 *GHOST-XMD Full Setup Guide!*\n\n🚀 Bug Fixes + New Commands + Fast AI Chat\n📺 Watch Now: https://youtu.be/-oz_u1iMgf8`
                             });
                             console.log("🎬 Video guide sent successfully");
                             
                             // Send warning message
-                            image: { url: 'https://files.catbox.moe/cv6t5y.jpeg' },
-                            caption: `🎬 *GHOST-XMD Full Setup Guide!*\n\n🚀 Bug Fixes + New Commands + Fast AI Chat\n📺 Watch Now: http://www.youtube.com/@HACKLINKTECH-h4h`
-                        });
-                        console.log("🎬 Video guide sent successfully");
-
-                        // Send warning message
-                        await KnightBot.sendMessage(userJid, {
-                            text: `⚠️Do not share this file with anybody⚠️\n 
+                            await sock.sendMessage(userJid, {
+                                text: `⚠️Do not share this file with anybody⚠️\n 
 ┌┤✑  Thanks for using GHOST-XMD
 │└────────────┈ ⳹        
 │©2025 GHOST-VIEWER
